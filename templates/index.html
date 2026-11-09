@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ p.person.name }} — {{ p.person.headline }}</title>
+<meta name="description" content="{{ p.person.tagline }}">
+<meta property="og:title" content="Ask {{ p.person.name }}">
+<meta property="og:description" content="{{ p.person.tagline }}">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><b>{{ p.person.handle }}</b> / profile index v1</div>
+    <nav class="links" aria-label="Sections">
+      <a href="#experience">experience</a><a href="#skills">skills</a><a href="#projects">projects</a><a href="/api/docs">api</a><a href="#contact">contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <div class="eyebrow">{{ p.person.headline }} · {{ p.person.location.split(',')[0] }}</div>
+      <h1>{{ p.person.name }}</h1>
+      <p class="role">{{ p.person.tagline }}</p>
+      <dl class="facts">
+        <dt>now</dt><dd>{{ p.person.now }}</dd>
+        <dt>before</dt><dd>{{ p.person.before }}</dd>
+        <dt>exp</dt><dd>{{ p.person.experience_years }} years</dd>
+        <dt>stack</dt><dd>{{ p.person.stack | join(' · ') }}</dd>
+      </dl>
+      <p class="lede">This page works like the systems I build. My career is split into chunks and indexed. Ask a question and the API retrieves the relevant chunks, scores them, and answers only from what it found.</p>
+    </div>
+
+    <div class="console" aria-label="Ask the profile">
+      <div class="c-head"><span class="live">retriever ready</span><span>{{ p.index | length }} chunks indexed</span></div>
+      <form class="q" id="qform">
+        <label for="qin" class="sr-only">Your question</label>
+        <input id="qin" type="text" autocomplete="off" maxlength="200" placeholder="Ask about agents, scale, Kafka, leadership…" value="{{ p.suggested_questions[0] }}">
+        <button type="submit">Retrieve</button>
+      </form>
+      <div class="chips">
+        {% for s in p.suggested_questions %}<button type="button" data-q="{{ s }}">{{ s }}</button>{% endfor %}
+      </div>
+      <div class="trace" id="trace"></div>
+      <ul class="hits" id="hits"></ul>
+      <div class="answer" id="answer"><span class="lbl">Grounded answer</span><p>Loading…</p></div>
+    </div>
+  </div>
+
+  <section class="block" aria-label="Numbers">
+    <div class="metrics">
+      {% for m in p.metrics %}<div class="metric"><b>{{ m.value }}</b><span>{{ m.label }}</span></div>{% endfor %}
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="sec-head"><h2>Experience</h2><span class="mono">GET /api/profile/experience · {{ p.experience | length }} roles</span></div>
+    <div class="timeline">
+      {% for j in p.experience %}
+      <article class="job">
+        <div class="when">{{ j.when }}</div>
+        <div>
+          <h3>{{ j.title }}{% if j.current %}<span class="status">current</span>{% endif %}</h3>
+          <div class="org">{{ j.org }}</div>
+          <ul>{% for pt in j.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+          <div class="tags">{% for t in j.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="sec-head"><h2>Skills index</h2><span class="mono">GET /api/profile/skills</span></div>
+    <div class="index">
+      {% for group, items in p.skills.items() %}
+      <div><h3>{{ group }}</h3><div class="tags">{% for t in items %}<span class="tag">{{ t }}</span>{% endfor %}</div></div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="sec-head"><h2>Projects and recognition</h2><span class="mono">GET /api/profile/projects</span></div>
+    <div class="two">
+      {% for pr in p.projects %}
+      <div>
+        <h3>{% if pr.link %}<a href="{{ pr.link }}" target="_blank" rel="noopener">{{ pr.name }}</a>{% else %}{{ pr.name }}{% endif %}</h3>
+        <p>{{ pr.description }}</p>
+        <div class="tags">{% for t in pr.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+      </div>
+      {% endfor %}
+      <div>
+        <h3>Awards</h3>
+        <ul>{% for a in p.awards %}<li>{{ a }}</li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h3>Education and certifications</h3>
+        <ul>{% for e in p.education + p.certifications %}<li>{{ e }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="sec-head"><h2>Get in touch</h2><span class="mono">AI agents · RAG · backend architecture</span></div>
+    <div class="contact">
+      <div class="email"><span id="mail">{{ p.contact.email }}</span><button type="button" id="copy">Copy</button></div>
+      <a href="{{ p.contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="{{ p.contact.github }}" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <footer>Built with FastAPI from one YAML file. Every answer comes from the indexed chunks. Nothing is generated beyond them.</footer>
+</div>
+<script src="/static/app.js" defer></script>
+</body>
+</html>

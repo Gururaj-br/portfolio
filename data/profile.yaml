@@ -1,0 +1,188 @@
+# The whole site is generated from this file.
+# Edit it, redeploy, done. No database, no CMS.
+
+person:
+  name: Gururaja BR
+  handle: gururaja.br
+  headline: Principal Engineer
+  location: Bangalore, India
+  tagline: I build AI agents, RAG systems and the Python backends that keep them running.
+  experience_years: 6.8
+  stack: [Python, FastAPI, LangChain, AWS]
+  now: Principal Engineer, Tricon Infotech
+  before: Dataweave, 2019–2026
+
+contact:
+  email: gururaj.b.bhat@gmail.com
+  linkedin: https://www.linkedin.com/in/gururaj-b-bhat
+  github: https://github.com/Gururaj-br
+
+metrics:
+  - value: "2M+"
+    label: image requests a day, 40% lower latency
+  - value: "50+"
+    label: global enterprise clients served
+  - value: "800+"
+    label: live KPI alerts, 2,000+ recurring reports
+  - value: "99%"
+    label: extraction success on TB-scale scraping
+  - value: "10+"
+    label: engineers and interns mentored
+
+experience:
+  - title: Principal Engineer
+    org: Tricon Infotech · Bangalore
+    when: Mar 2026 – now
+    current: true
+    points:
+      - Leads design and development of AI solutions, focused on agent architecture, orchestration and rollout across business use cases.
+      - Designed and built an AI quiz agent end to end as part of an AI initiative.
+      - Built a client chatbot prototype on agentic AI, with the LLM drawing context from Snowflake and RAG pipelines.
+      - Contributed to an AI migration agent that automates migration work.
+      - Built monitoring and alerting with PostgreSQL, Prefect and New Relic to catch failed or delayed batch jobs and notify teams.
+    tags: [LangChain, Ollama, RAG, Tool calling, Prefect, AWS SQS, PostgreSQL, Databricks, Snowflake]
+
+  - title: Python Backend Developer
+    org: Dataweave · Bangalore
+    when: Feb 2023 – Feb 2026
+    points:
+      - Improved backends for Pricing Intelligence, Assortment Analysis and Product Availability, used by 50+ global enterprise clients.
+      - Built an image proxy service on CherryPy and NGINX handling 2M+ requests a day, cutting latency 40% with caching and dynamic resizing.
+      - Engineered a KPI alerting system running 800+ active alerts and 2,000+ recurring reports.
+      - Rebuilt report delivery on S3 and MySQL, cutting processing time 35% and duplication 20%.
+      - Led a database re-architecture to a custom MySQL design, improving queries and doubling data retention.
+      - Built Grafana and Kibana dashboards that sped up issue resolution by 30%.
+    tags: [FastAPI, CherryPy, Kafka, RabbitMQ, MySQL, Docker, Kubernetes, Grafana]
+
+  - title: Senior Data Engineer
+    org: Dataweave · Bangalore
+    when: Apr 2022 – Feb 2023
+    points:
+      - Migrated a legacy tool to Python 3, improving performance and uptime by 50%.
+      - Built ETL pipelines on Python and Kafka, cutting manual processing by 30%.
+      - Delivered 10+ global data projects for enterprise retail clients.
+      - Mentored 10+ engineers and interns on backend architecture and Python standards.
+    tags: [Python, Kafka, Airflow, AWS, Linux]
+
+  - title: Data Engineer
+    org: Dataweave · Bangalore
+    when: Sep 2019 – Apr 2022
+    points:
+      - Automated web scraping over terabytes of e-commerce data with a 99% extraction success rate.
+      - Built data-quality checks across millions of records, improving reporting accuracy by 25%.
+      - Streamlined analytics pipelines on S3 and Athena, cutting delivery time by 60%.
+    tags: [Python, Shell, S3, Athena, Pandas]
+
+skills:
+  "AI & LLMs": [LLMs, Generative AI, AI agents, Agentic AI, Agent orchestration, Prompt engineering, LangChain, Ollama, RAG, Tool calling]
+  Backend: [Python, FastAPI, Tornado, CherryPy, REST APIs, Microservices, Web scraping]
+  Data: [ETL, Data validation, PySpark, Databricks, Snowflake, DuckDB, Jupyter]
+  Databases: [MySQL, PostgreSQL, MongoDB, Redis]
+  Messaging: [Kafka, RabbitMQ, Celery, AWS SQS]
+  "Cloud & ops": [AWS S3, Athena, EC2, Lambda, DynamoDB, Docker, Kubernetes, Airflow, Prefect, NGINX, CI/CD]
+  Observability: [Grafana, Prometheus, Kibana, Redash, New Relic]
+
+projects:
+  - name: Document Q&A on a local LLM
+    description: >-
+      A RAG app that answers questions over PDF and Word files. It handles ingestion,
+      chunking, vector storage in ChromaDB and semantic retrieval, then generates answers
+      with Phi-3 Mini through Ollama. Fully local.
+    tags: [Python, Ollama, Phi-3 Mini, ChromaDB]
+    link: null   # add the repo URL here
+
+awards:
+  - Value Champion, three times (including 2021 and 2023)
+  - Key Contributor Award, 2021, for faster delivery cycles and product quality
+
+education:
+  - B.E. Mechanical Engineering, Visvesvaraya Technological University, 2017
+
+certifications:
+  - Python for Data Science Bootcamp
+  - Oracle SQL (Udemy)
+  - Getting Started with Node.js (Simplilearn)
+
+# Retrieval index for /api/ask.
+# Each chunk: id (source path), title, answer (what gets said), keywords (extra recall terms).
+index:
+  - id: tricon/agents
+    title: AI agent architecture at Tricon
+    answer: At Tricon Infotech he leads the design of AI agents, including their architecture, orchestration and rollout.
+    keywords: ai agents agentic orchestration architecture lead design langchain tool calling current job now
+  - id: tricon/quiz-agent
+    title: AI quiz agent
+    answer: He designed and built an AI-powered quiz agent end to end.
+    keywords: quiz agent ai built llm end to end
+  - id: tricon/chatbot
+    title: Agentic chatbot on Snowflake + RAG
+    answer: He built a client chatbot prototype where the LLM pulls context from Snowflake and RAG pipelines.
+    keywords: chatbot rag snowflake llm agent agentic client prototype poc retrieval
+  - id: tricon/migration-agent
+    title: AI migration agent
+    answer: He contributed to an AI agent that automates migration work.
+    keywords: migration agent ai automation
+  - id: tricon/monitoring
+    title: Batch monitoring with Prefect
+    answer: He built batch-job monitoring with PostgreSQL, Prefect and New Relic that alerts teams to failed or delayed jobs.
+    keywords: monitoring alerting prefect postgresql new relic batch observability
+  - id: dataweave/clients
+    title: Backends for 50+ enterprise clients
+    answer: At Dataweave he improved backends for three flagship products used by 50+ global enterprise clients.
+    keywords: backend python scale clients enterprise pricing assortment
+  - id: dataweave/image-proxy
+    title: Image proxy at 2M+ requests/day
+    answer: He built an image proxy on CherryPy and NGINX serving 2M+ requests a day, cutting latency by 40%.
+    keywords: scale performance latency requests nginx cherrypy caching image proxy high traffic
+  - id: dataweave/alerts
+    title: KPI alerting system
+    answer: He engineered a KPI alerting system with 800+ active alerts and 2,000+ recurring reports on RabbitMQ, Kafka, MongoDB and MySQL.
+    keywords: alerting kpi kafka rabbitmq mongodb mysql reports scale
+  - id: dataweave/reports
+    title: Report delivery rebuild
+    answer: He rebuilt report delivery on AWS S3 and MySQL, cutting processing time by 35%.
+    keywords: aws s3 boto3 mysql reports performance cloud
+  - id: dataweave/db
+    title: Database re-architecture
+    answer: He led a MySQL re-architecture that improved query speed and doubled data retention.
+    keywords: database mysql migration schema lead architecture performance sql
+  - id: dataweave/observability
+    title: Grafana and Kibana dashboards
+    answer: He built Grafana and Kibana dashboards that sped up issue resolution by 30%.
+    keywords: grafana prometheus kibana observability monitoring dashboards
+  - id: dataweave/devops
+    title: CI/CD and Kubernetes
+    answer: He worked with DevOps on CI/CD pipelines, deploying with Docker and Kubernetes.
+    keywords: cicd devops docker kubernetes deployment cloud
+  - id: dataweave/etl
+    title: Kafka ETL pipelines
+    answer: As Senior Data Engineer he built Python and Kafka ETL pipelines that cut manual processing by 30%.
+    keywords: etl kafka pipelines data engineering airflow
+  - id: dataweave/mentoring
+    title: Mentoring and leadership
+    answer: He mentored 10+ engineers and interns and delivered 10+ global data projects end to end.
+    keywords: lead leadership mentor mentoring team people manage
+  - id: dataweave/scraping
+    title: TB-scale web scraping
+    answer: As a Data Engineer he automated scraping over terabytes of e-commerce data with a 99% success rate.
+    keywords: scraping crawler web data scale terabytes extraction
+  - id: dataweave/quality
+    title: Data quality and Athena pipelines
+    answer: He built data-quality checks over millions of records and cut analytics delivery time by 60% with S3 and Athena.
+    keywords: data quality validation athena s3 aws analytics
+  - id: projects/rag-qa
+    title: Local RAG document Q&A
+    answer: On his own he built a fully local RAG app over PDFs and Word files using ChromaDB, Ollama and Phi-3 Mini.
+    keywords: rag retrieval vector chromadb ollama local llm project side personal document
+  - id: profile/summary
+    title: Experience and education
+    answer: He has 6.8 years of experience and a B.E. in Mechanical Engineering from VTU (2017), and is based in Bangalore.
+    keywords: experience years education degree background summary who location bangalore awards
+
+suggested_questions:
+  - What AI agents has he built?
+  - Has he worked at scale?
+  - RAG experience
+  - Kafka and data pipelines
+  - Has he led people?
+  - AWS and cloud
